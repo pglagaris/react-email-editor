@@ -2,7 +2,7 @@ import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createGlobalStyle } from 'styled-components';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import Example from './src/example';
 import Dashboard from './src/dashboard';
@@ -25,8 +25,9 @@ const App = () => {
     <Router>
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<Example />} />
+        <Route path="/example" element={<Example />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </Router>
   );
